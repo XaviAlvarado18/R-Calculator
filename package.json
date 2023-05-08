@@ -1,0 +1,36 @@
+{
+  "name": "reactcalculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XaviAlvarado18/R-Calculator.git"
+  },
+  "author": "Javier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XaviAlvarado18/R-Calculator/issues"
+  },
+  "homepage": "https://github.com/XaviAlvarado18/R-Calculator#readme",
+  "dependencies": {
+    "html-webpack-plugin": "^5.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.2"
+  }
+}
