@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.app{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.calc-w{
+    background-color: white;
+    width: 400px;
+    border-radius: 16px;
+}
