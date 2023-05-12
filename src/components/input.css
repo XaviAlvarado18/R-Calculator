@@ -1,0 +1,19 @@
+.input-w{
+    height: 10em;
+    display:flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+
+    padding: 16px;
+}
+
+.resultado{
+    flex: 1;
+    font-size:24px;
+}
+
+.input_text{
+    flex: 1;
+    font-size: 18px;
+}
