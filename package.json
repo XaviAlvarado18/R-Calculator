@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/XaviAlvarado18/R-Calculator#readme",
   "dependencies": {
     "html-webpack-plugin": "^5.5.1",
+    "mathjs": "^11.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "webpack": "^5.82.0",
@@ -35,6 +36,8 @@
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
     "style-loader": "^3.3.2"
   }
 }

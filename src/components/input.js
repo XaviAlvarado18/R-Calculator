@@ -1,15 +1,16 @@
 import './input.css';
 import React from 'react';
 
-const Input =()=>{
+const Input =({texto,resultado})=>{
+
     return( 
     <div className='input-w'>
         <div className='resultado'>
-            <h1>resultado</h1>
+            <h1>{resultado}</h1>
         </div>
 
         <div className='input_text'>
-            <h3>Texto</h3>
+            <h3>{texto}</h3>
         </div>
 
     </div>
