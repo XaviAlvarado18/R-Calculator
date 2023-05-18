@@ -2,10 +2,10 @@ import React,{useState} from "react";
 import './app.css';
 import Botones from "./components/botones";
 import Input from "./components/input";
-import * as math from "mathjs";
+import { create, all,evaluate } from 'mathjs';
 
 
-console.log("PUNTO Y COMA")
+console.log("PUNTO Y COMA");
 
 const App =()=>{
 
@@ -13,15 +13,38 @@ const App =()=>{
     const[resultado,setResultado] = useState("")
     const [Vresult, setVResult] = useState([]);
     const [numberInput, setNumberInput] = useState(false);
+    const [booleano, setBooleano] = useState(false);
+    const [nval,setval] = useState('+')
 
+    const config = {
+        number: 'BigNumber',
+        precision: 20 
+    };
+      
+    const math = create(all, config);
+    
+    function formatResult(result) {
+        const roundedResult = Math.round(result * 1e9) / 1e9; 
+      
+        if (Number.isInteger(roundedResult)) {
+          return roundedResult.toString(); 
+        } else {
+          return roundedResult.toFixed(8); 
+        }
+    }
 
 
     const addText = (val) => {
-        if (text === "0 " || numberInput === true) {
+        if ((text === "0 " && val !== "0") || numberInput === true) {
             setNumberInput(false)
             setTexto((val.toString()+" "));
             Vresult.push(val)
-        }else if(val === "+" || val === "-" || val === "/" || val === "*"){
+        }else if(val === "0" && text === "0 "){
+            setTexto((text) => [ val + " "]); 
+            setNumberInput(false)
+            Vresult.push(val)
+        }
+        else if(val === "+" || val === "-" || val === "/" || val === "*"){
             setNumberInput(true)
             setVResult((Vresult) => [...Vresult,val])
         }
@@ -43,8 +66,37 @@ const App =()=>{
     const calcularResultado = () =>{
         const parser = math.parser()
         const input = Vresult.join("")
-        setResultado(parser.evaluate(input))
+        if(parser.evaluate(input)>999999999){
+            setResultado("ERROR")
+        }else if(parser.evaluate(input)<999999999){
+            //setResultado(parser.evaluate(input).toFixed(9))
+            const result = parser.evaluate(input);
+            const formattedResult = formatResult(result);
+            setResultado(formattedResult)
+        }
+        
     }
+
+    const positiveOrNegative = () => {
+        const newBooleano = !booleano;
+        setBooleano(newBooleano);
+        if(booleano){
+            setval('-')
+            setNumberInput(false)
+            setTexto((nval.toString()+" "));
+            Vresult.push(nval)
+        }else{
+            setval('+')
+            setNumberInput(false)
+            setTexto((nval.toString()+" "));
+            Vresult.push(nval)
+        }
+    };
+
+
+
+
+
 
     return(
         <div className="app">
@@ -52,7 +104,7 @@ const App =()=>{
                 <Input texto={text} resultado={resultado}/>
                 <div className='filas'>
                     <Botones icon='C' color='#afb0b5' handleClick={reset}/>
-                    <Botones icon='±' color='#afb0b5' handleClick={addText}/>
+                    <Botones icon='±' color='#afb0b5' handleClick={positiveOrNegative}/>
                     <Botones icon='%' color='#afb0b5' handleClick={addText}/>
                     <Botones icon='/' color='#f98410' handleClick={addText}/>
                 </div>
